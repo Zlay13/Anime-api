@@ -12,7 +12,7 @@ Manganim (Manga + Anime) Restful API (bahasa Indonesia) built with ❤️ by Tus
     ```bash
     npm run dev or npm run start
     ```
-4. visit http://localhost:3000/api
+4. visit http://localhost:3000/
 
 # Anime Documentation
 __API__ __PATH__ = https://manganim.herokuapp.com/anime
