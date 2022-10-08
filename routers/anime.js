@@ -4,7 +4,7 @@ const cheerio = require("cheerio");
 
 // home -------Done------
 router.get("/", async (req, res) => {
-  let url = "https://meownime.moe/";
+  let url = "https://m.meownime.ai/";
 
   try {
     const response = await AxiosService(url);
@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
       });
 
       $("div > a").each(function (i, e) {
-        link_anime[i] = $(this).attr("href").replace("https://meownime.moe/", "https://manganim.herokuapp.com/anime/detail/");
+        link_anime[i] = $(this).attr("href").replace("https://m.meownime.ai/", "https://manganim.herokuapp.com/anime/detail/");
       });
 
       var data = [];
@@ -57,7 +57,7 @@ router.get("/", async (req, res) => {
 
 // home -------Done------
 router.get("/ongoing", async (req, res) => {
-  let url = "https://meownime.moe/tag/ongoing";
+  let url = "https://m.meownime.ai/tag/ongoing";
 
   try {
     const response = await AxiosService(url);
@@ -77,7 +77,7 @@ router.get("/ongoing", async (req, res) => {
       });
 
       $("div > a").each(function (i, e) {
-        link_anime[i] = $(this).attr("href").replace("https://meownime.moe/", "https://manganim.herokuapp.com/anime/detail/");
+        link_anime[i] = $(this).attr("href").replace("https://m.meownime.ai/", "https://manganim.herokuapp.com/anime/detail/");
       });
 
       var data = [];
@@ -110,7 +110,7 @@ router.get("/ongoing", async (req, res) => {
 
 // home -------Done------
 router.get("/batch", async (req, res) => {
-  let url = "https://meownime.moe/tag/batch";
+  let url = "https://m.meownime.ai/tag/batch";
 
   try {
     const response = await AxiosService(url);
@@ -130,7 +130,7 @@ router.get("/batch", async (req, res) => {
       });
 
       $("div > a").each(function (i, e) {
-        link_anime[i] = $(this).attr("href").replace("https://meownime.moe/", "https://manganim.herokuapp.com/anime/detail/");
+        link_anime[i] = $(this).attr("href").replace("https://m.meownime.ai/", "https://manganim.herokuapp.com/anime/detail/");
       });
 
       var data = [];
@@ -163,7 +163,7 @@ router.get("/batch", async (req, res) => {
 
 // home -------Done------
 router.get("/movie", async (req, res) => {
-  let url = "https://meownime.moe/tag/movie";
+  let url = "https://m.meownime.ai/tag/movie";
 
   try {
     const response = await AxiosService(url);
@@ -183,7 +183,7 @@ router.get("/movie", async (req, res) => {
       });
 
       $("div > a").each(function (i, e) {
-        link_anime[i] = $(this).attr("href").replace("https://meownime.moe/", "https://manganim.herokuapp.com/anime/detail/");
+        link_anime[i] = $(this).attr("href").replace("https://m.meownime.ai/", "https://manganim.herokuapp.com/anime/detail/");
       });
 
       var data = [];
@@ -218,7 +218,7 @@ router.get("/movie", async (req, res) => {
 router.get("/detail/:param", async (req, res) => {
   const param = req.params.param;
 
-  let url = `https://meownime.moe/${param}`;
+  let url = `https://m.meownime.ai/${param}`;
 
   try {
     const response = await AxiosService(url);
@@ -237,7 +237,7 @@ router.get("/detail/:param", async (req, res) => {
       let judul_alternatif = $("div.post-inner-content > div > ul > li:nth-child(2)").text().substring(19).trim();
       let tipe_anime = $("div.post-inner-content > div > ul > li:nth-child(3) > a").text().trim();
       let tipe_link = $("div.post-inner-content > div > ul > li:nth-child(3) > a").attr("href").trim();
-      tipe_link = tipe_link.replace("https://meownime.moe/type/", "");
+      tipe_link = tipe_link.replace("https://m.meownime.ai/type/", "");
       let status_anime = $("div.post-inner-content > div > ul > li:nth-child(4)").text().substring(15).trim();
       let jumlah_episode = $("div > div > ul > li.Episodex");
 
@@ -249,7 +249,7 @@ router.get("/detail/:param", async (req, res) => {
       let tanggal_tayang = $("div.post-inner-content > div > ul > li:nth-child(7)").text().substring(16).trim();
       let studio = $("div > div > ul > li.Studiox > a").text().trim().trim();
       let link_studio = $("div.post-inner-content > div > ul > li.Studiox > a").attr("href").trim();
-      link_studio = link_studio.replace("https://meownime.moe/studio/", "");
+      link_studio = link_studio.replace("https://m.meownime.ai/studio/", "");
       let durasi_per_eps = $("div.post-inner-content > div > ul > li:nth-child(9)").text().substring(21).trim();
       let genre = $("div > div > ul > li.Genrex").text().substring(8).trim();
       let score = $("div > div > ul > li.Scorex").text().substring(21).trim();
@@ -339,7 +339,7 @@ router.get("/detail/:param", async (req, res) => {
 
       let trailer = $("div.post-inner-content > div > center > iframe").attr("src");
 
-      url = url.replace("https://meownime.moe/", "https://manganim.herokuapp.com/anime/detail/");
+      url = url.replace("https://m.meownime.ai/", "https://manganim.herokuapp.com/anime/detail/");
 
       var data = [];
       for (let i = 0; i < 1; i++) {
@@ -392,7 +392,7 @@ router.get("/detail/:param", async (req, res) => {
 // search -------Done------
 router.get("/search/:param", async (req, res) => {
   let param = req.params.param;
-  let url = `https://meownime.moe/?s=${param}`;
+  let url = `https://m.meownime.ai/?s=${param}`;
 
   try {
     const response = await AxiosService(url);
@@ -412,7 +412,7 @@ router.get("/search/:param", async (req, res) => {
       });
 
       $("div > a").each(function (i, e) {
-        link_anime[i] = $(this).attr("href").replace("https://meownime.moe/", "https://manganim.herokuapp.com/anime/detail/");
+        link_anime[i] = $(this).attr("href").replace("https://m.meownime.ai/", "https://manganim.herokuapp.com/anime/detail/");
       });
 
       var data = [];
@@ -445,7 +445,7 @@ router.get("/search/:param", async (req, res) => {
 
 // genre -------Done------
 router.get("/genre", async (req, res) => {
-  let url = "https://meownime.moe/genre";
+  let url = "https://m.meownime.ai/genre";
 
   try {
     const response = await AxiosService(url);
@@ -460,7 +460,7 @@ router.get("/genre", async (req, res) => {
       });
 
       $(`#post-18 > div > div > ul > li:nth-child(1n) > a`).each(function (i, e) {
-        link_genre[i] = $(this).attr("href").replace("https://meownime.moe/genres/", "https://manganim.herokuapp.com/anime/genre/");
+        link_genre[i] = $(this).attr("href").replace("https://m.meownime.ai/genres/", "https://manganim.herokuapp.com/anime/genre/");
       });
 
       var data = [];
@@ -492,7 +492,7 @@ router.get("/genre", async (req, res) => {
 
 // genre -------Done------
 router.get("/rekomendasi-anime", async (req, res) => {
-  let url = "https://meownime.moe/rekomendasi-anime";
+  let url = "https://m.meownime.ai/rekomendasi-anime";
 
   try {
     const response = await AxiosService(url);
@@ -512,7 +512,7 @@ router.get("/rekomendasi-anime", async (req, res) => {
       });
 
       $(`div > ol > li:nth-child(n) > strong > a`).each(function (i, e) {
-        link_anime[i] = $(this).attr("href").replace("https://meownime.moe/", "https://manganim.herokuapp.com/anime/detail/");
+        link_anime[i] = $(this).attr("href").replace("https://m.meownime.ai/", "https://manganim.herokuapp.com/anime/detail/");
       });
 
       var data = [];
@@ -547,7 +547,7 @@ router.get("/rekomendasi-anime", async (req, res) => {
 // genre detail -------Done------
 router.get("/genre/:param", async (req, res) => {
   let param = req.params.param;
-  let url = `https://meownime.moe/genres/${param}`;
+  let url = `https://m.meownime.ai/genres/${param}`;
 
   try {
     const response = await AxiosService(url);
@@ -607,10 +607,10 @@ router.get("/genre/:param", async (req, res) => {
 router.get("/genre/:param/page/:num", async (req, res) => {
   let param = req.params.param;
   let num = req.params.num;
-  let url = `https://meownime.moe/genre/${param}/page/${num}`;
+  let url = `https://m.meownime.ai/genre/${param}/page/${num}`;
 
-  if (url == `https://meownime.moe/genre/${param}/page/1`)
-    url = `https://meownime.moe/genre/${param}`;
+  if (url == `https://m.meownime.ai/genre/${param}/page/1`)
+    url = `https://m.meownime.ai/genre/${param}`;
 
   try {
     const response = await AxiosService(url);
@@ -668,7 +668,7 @@ router.get("/genre/:param/page/:num", async (req, res) => {
 
 // season -------Done------
 router.get("/seasons", async (req, res) => {
-  let url = "https://meownime.moe/seasons";
+  let url = "https://m.meownime.ai/seasons";
 
   try {
     const response = await AxiosService(url);
@@ -721,7 +721,7 @@ router.get("/seasons", async (req, res) => {
 
 // studio -------Done------
 router.get("/studio", async (req, res) => {
-  let url = "https://meownime.moe/genre/#studio";
+  let url = "https://m.meownime.ai/genre/#studio";
 
   try {
     const response = await AxiosService(url);
@@ -773,7 +773,7 @@ router.get("/studio", async (req, res) => {
 // studio detail -------Done------
 router.get("/studio/:param", async (req, res) => {
   let param = req.params.param;
-  let url = `https://meownime.moe/studio/${param}`;
+  let url = `https://m.meownime.ai/studio/${param}`;
 
   try {
     const response = await AxiosService(url);
@@ -834,9 +834,9 @@ router.get("/studio/:param/page/:id", async (req, res) => {
   let param = req.params.param;
   let id = req.params.id;
 
-  let url = `https://meownime.moe/studio/${param}/page/${id}`;
-  if (url == `https://meownime.moe/studio/${param}/page/1`)
-    url = `https://meownime.moe/studio/${param}`;
+  let url = `https://m.meownime.ai/studio/${param}/page/${id}`;
+  if (url == `https://m.meownime.ai/studio/${param}/page/1`)
+    url = `https://m.meownime.ai/studio/${param}`;
 
   try {
     const response = await AxiosService(url);
@@ -894,7 +894,7 @@ router.get("/studio/:param/page/:id", async (req, res) => {
 
 // schedule ------Done-----------
 router.get("/jadwal-rilis", async (req, res) => {
-  let url = "https://meownime.moe/jadwal-rilis";
+  let url = "https://m.meownime.ai/jadwal-rilis";
 
   try {
     const response = await AxiosService(url);
@@ -936,7 +936,7 @@ router.get("/jadwal-rilis", async (req, res) => {
         i,
         e
       ) {
-        url_anime_senin[i] = $(this).attr("href").replace("https://meownime.moe/", "https://manganim.herokuapp.com/anime/detail/");
+        url_anime_senin[i] = $(this).attr("href").replace("https://m.meownime.ai/", "https://manganim.herokuapp.com/anime/detail/");
       });
 
       $("#post-16 > div > ul:nth-child(4) > li:nth-child(1n) > strong").each(function (
@@ -950,7 +950,7 @@ router.get("/jadwal-rilis", async (req, res) => {
         i,
         e
       ) {
-        url_anime_selasa[i] = $(this).attr("href").replace("https://meownime.moe/", "https://manganim.herokuapp.com/anime/detail/");
+        url_anime_selasa[i] = $(this).attr("href").replace("https://m.meownime.ai/", "https://manganim.herokuapp.com/anime/detail/");
       });
 
       $("#post-16 > div > ul:nth-child(6) > li:nth-child(1n) > strong").each(function (
@@ -964,7 +964,7 @@ router.get("/jadwal-rilis", async (req, res) => {
         i,
         e
       ) {
-        url_anime_rabu[i] = $(this).attr("href").replace("https://meownime.moe/", "https://manganim.herokuapp.com/anime/detail/");
+        url_anime_rabu[i] = $(this).attr("href").replace("https://m.meownime.ai/", "https://manganim.herokuapp.com/anime/detail/");
       });
 
       $("#post-16 > div > ul:nth-child(8) > li:nth-child(1n) > strong").each(function (
@@ -978,7 +978,7 @@ router.get("/jadwal-rilis", async (req, res) => {
         i,
         e
       ) {
-        url_anime_kamis[i] = $(this).attr("href").replace("https://meownime.moe/", "https://manganim.herokuapp.com/anime/detail/");
+        url_anime_kamis[i] = $(this).attr("href").replace("https://m.meownime.ai/", "https://manganim.herokuapp.com/anime/detail/");
       });
 
 
@@ -993,7 +993,7 @@ router.get("/jadwal-rilis", async (req, res) => {
         i,
         e
       ) {
-        url_anime_jumat[i] = $(this).attr("href").replace("https://meownime.moe/", "https://manganim.herokuapp.com/anime/detail/");
+        url_anime_jumat[i] = $(this).attr("href").replace("https://m.meownime.ai/", "https://manganim.herokuapp.com/anime/detail/");
       });
       $("#post-16 > div > ul:nth-child(12) > li:nth-child(1n) > strong").each(function (
         i,
@@ -1006,7 +1006,7 @@ router.get("/jadwal-rilis", async (req, res) => {
         i,
         e
       ) {
-        url_anime_sabtu[i] = $(this).attr("href").replace("https://meownime.moe/", "https://manganim.herokuapp.com/anime/detail/");
+        url_anime_sabtu[i] = $(this).attr("href").replace("https://m.meownime.ai/", "https://manganim.herokuapp.com/anime/detail/");
       });
 
       $("#post-16 > div > ul:nth-child(14) > li:nth-child(1n)").each(function (
@@ -1020,7 +1020,7 @@ router.get("/jadwal-rilis", async (req, res) => {
         i,
         e
       ) {
-        url_anime_minggu[i] = $(this).attr("href").replace("https://meownime.moe/", "https://manganim.herokuapp.com/anime/detail/");
+        url_anime_minggu[i] = $(this).attr("href").replace("https://m.meownime.ai/", "https://manganim.herokuapp.com/anime/detail/");
       });
 
       var senin = [];
